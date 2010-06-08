@@ -1,0 +1,289 @@
+
+
+Started GET "/rails/info/properties" for 127.0.0.1 at 2010-06-07 18:42:05
+  Processing by Rails::InfoController#properties as */*
+  [1m[36mSQL (0.4ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+Rendered inline template (0.7ms)
+Completed 200 OK in 34ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (2.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (1.3ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateTasks (20100608012013)
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "icon" varchar(255), "status" varchar(255), "tags" text, "due_date" date, "completed_at" datetime, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100608012013')[0m
+  [1m[35mSQL (0.2ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("tasks")[0m
+
+
+Started GET "/task" for 127.0.0.1 at 2010-06-07 19:48:46
+
+ActionController::RoutingError (No route matches "/task"):
+  
+
+Rendered /Users/redbeard/.rvm/gems/ruby-1.9.2-head/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2010-06-07 19:48:49
+  Processing by TasksController#index as HTML
+  [1m[36mSQL (0.6ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+Rendered tasks/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 55ms (Views: 5.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2010-06-07 19:48:53
+  Processing by TasksController#new as HTML
+Rendered tasks/_form.html.erb (59.0ms)
+Rendered tasks/new.html.erb within layouts/application (62.1ms)
+Completed 200 OK in 75ms (Views: 64.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2010-06-07 19:49:06
+  Processing by TasksController#new as HTML
+Rendered tasks/_form.html.erb (15.6ms)
+Rendered tasks/new.html.erb within layouts/application (18.5ms)
+Completed 200 OK in 32ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-06-07 19:50:53
+
+ActionController::RoutingError (uninitialized constant VideosController):
+  
+
+Rendered /Users/redbeard/.rvm/gems/ruby-1.9.2-head/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-06-07 19:51:09
+  Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+Rendered tasks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 13ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2010-06-07 19:51:39
+  Processing by TasksController#new as HTML
+Rendered tasks/_form.html.erb (16.0ms)
+Rendered tasks/new.html.erb within layouts/application (19.0ms)
+Completed 200 OK in 32ms (Views: 21.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tasks" for 127.0.0.1 at 2010-06-07 19:52:06
+  Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"18m69yQrzfzSckKt17FypXovhIMGhdBhT6jKm5Hdb2A=", "task"=>{"name"=>"Task 1", "description"=>"Doing something that matters", "icon"=>"", "status"=>"OPEN", "tags"=>"dude", "due_date(1i)"=>"2010", "due_date(2i)"=>"6", "due_date(3i)"=>"8", "completed_at(1i)"=>"2010", "completed_at(2i)"=>"6", "completed_at(3i)"=>"8", "completed_at(4i)"=>"01", "completed_at(5i)"=>"51"}, "commit"=>"Create Task"}
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "tasks" ("completed_at", "created_at", "description", "due_date", "icon", "name", "status", "tags", "updated_at") VALUES ('2010-06-08 01:51:00.000000', '2010-06-08 01:52:06.051857', 'Doing something that matters', '2010-06-08', '', 'Task 1', 'OPEN', 'dude', '2010-06-08 01:52:06.051857')
+Redirected to http://localhost:3000/tasks/1
+Completed 302 Found in 98ms
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2010-06-07 19:52:06
+  Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTask Load (0.3ms)[0m  [1mSELECT "tasks".* FROM "tasks" WHERE ("tasks"."id" = 1) LIMIT 1[0m
+Rendered tasks/show.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 39ms (Views: 18.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/tasks/1" for 127.0.0.1 at 2010-06-07 19:52:11
+  Processing by TasksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTask Load (0.3ms)[0m  SELECT "tasks".* FROM "tasks" WHERE ("tasks"."id" = 1) LIMIT 1
+Rendered tasks/show.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 31ms (Views: 17.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2010-06-07 19:52:14
+  Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.4ms)[0m  [1mSELECT "tasks".* FROM "tasks"[0m
+Rendered tasks/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 26ms (Views: 17.4ms | ActiveRecord: 0.4ms)
+  [1m[36mSQL (0.3ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m  select sqlite_version(*)
+  [1m[36mSQL (3.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35mSQL (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mSQL (0.1ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+Migrating to CreateTasks (20100608012013)
+  [1m[35mSQL (0.5ms)[0m  CREATE TABLE "tasks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "icon" varchar(255), "status" varchar(255), "tags" text, "due_date" date, "completed_at" datetime, "list_id" integer, "context_id" integer, "project_id" integer, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100608012013')[0m
+Migrating to CreateContexts (20100608022613)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "contexts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100608022613')[0m
+Migrating to CreateProjects (20100608022635)
+  [1m[35mSQL (0.3ms)[0m  CREATE TABLE "projects" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100608022635')[0m
+Migrating to CreateLists (20100608022656)
+  [1m[35mSQL (0.4ms)[0m  CREATE TABLE "lists" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20100608022656')[0m
+  [1m[35mSQL (0.3ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[35mSQL (0.1ms)[0m   SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+  [1m[36mSQL (0.0ms)[0m  [1mPRAGMA index_list("contexts")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("lists")
+  [1m[36mSQL (0.1ms)[0m  [1mPRAGMA index_list("projects")[0m
+  [1m[35mSQL (0.0ms)[0m  PRAGMA index_list("tasks")
+
+
+Started GET "/tasks" for 127.0.0.1 at 2010-06-07 20:38:44
+  Processing by TasksController#index as HTML
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mTask Load (0.1ms)[0m  SELECT "tasks".* FROM "tasks"
+Rendered tasks/index.html.erb within layouts/application (27.7ms)
+Completed 200 OK in 88ms (Views: 30.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2010-06-07 20:38:52
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (0.3ms)[0m  [1mSELECT "lists".* FROM "lists"[0m
+Rendered lists/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 32ms (Views: 5.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2010-06-07 21:05:40
+  Processing by ProjectsController#index as HTML
+  [1m[35mProject Load (0.4ms)[0m  SELECT "projects".* FROM "projects"
+Rendered projects/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 18ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2010-06-07 21:05:43
+  Processing by ProjectsController#new as HTML
+Rendered projects/_form.html.erb (7.9ms)
+Rendered projects/new.html.erb within layouts/application (11.0ms)
+Completed 200 OK in 63ms (Views: 13.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/projects" for 127.0.0.1 at 2010-06-07 21:06:19
+  Processing by ProjectsController#create as HTML
+  Parameters: {"authenticity_token"=>"18m69yQrzfzSckKt17FypXovhIMGhdBhT6jKm5Hdb2A=", "project"=>{"name"=>"Hallway Closet Switch", "description"=>"Combine the hall closet and the office closet, fix the wall, etc."}, "commit"=>"Create Project"}
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "projects" ("created_at", "description", "name", "updated_at") VALUES ('2010-06-08 03:06:19.301194', 'Combine the hall closet and the office closet, fix the wall, etc.', 'Hallway Closet Switch', '2010-06-08 03:06:19.301194')[0m
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 47ms
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2010-06-07 21:06:19
+  Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mProject Load (0.3ms)[0m  SELECT "projects".* FROM "projects" WHERE ("projects"."id" = 1) LIMIT 1
+Rendered projects/show.html.erb within layouts/application (11.6ms)
+Completed 200 OK in 38ms (Views: 15.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/projects" for 127.0.0.1 at 2010-06-07 21:06:22
+  Processing by ProjectsController#index as HTML
+  [1m[36mProject Load (0.4ms)[0m  [1mSELECT "projects".* FROM "projects"[0m
+Rendered projects/index.html.erb within layouts/application (53.2ms)
+Completed 200 OK in 67ms (Views: 55.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2010-06-07 21:06:27
+  Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.4ms)[0m  SELECT "tasks".* FROM "tasks"
+Rendered tasks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 17ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/tasks/new" for 127.0.0.1 at 2010-06-07 21:06:30
+  Processing by TasksController#new as HTML
+Rendered tasks/_form.html.erb (19.6ms)
+Rendered tasks/new.html.erb within layouts/application (22.7ms)
+Completed 200 OK in 41ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2010-06-07 21:06:42
+  Processing by ListsController#index as HTML
+  [1m[36mList Load (0.4ms)[0m  [1mSELECT "lists".* FROM "lists"[0m
+Rendered lists/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 16ms (Views: 5.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lists/new" for 127.0.0.1 at 2010-06-07 21:06:44
+  Processing by ListsController#new as HTML
+Rendered lists/_form.html.erb (51.1ms)
+Rendered lists/new.html.erb within layouts/application (54.5ms)
+Completed 200 OK in 69ms (Views: 57.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/lists" for 127.0.0.1 at 2010-06-07 21:07:01
+  Processing by ListsController#create as HTML
+  Parameters: {"authenticity_token"=>"18m69yQrzfzSckKt17FypXovhIMGhdBhT6jKm5Hdb2A=", "list"=>{"name"=>"Next", "description"=>"Tasks that need to be addressed next."}, "commit"=>"Create List"}
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "lists" ("created_at", "description", "name", "updated_at") VALUES ('2010-06-08 03:07:01.940992', 'Tasks that need to be addressed next.', 'Next', '2010-06-08 03:07:01.940992')
+Redirected to http://localhost:3000/lists/1
+Completed 302 Found in 27ms
+
+
+Started GET "/lists/1" for 127.0.0.1 at 2010-06-07 21:07:01
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE ("lists"."id" = 1) LIMIT 1[0m
+Rendered lists/show.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 28ms (Views: 12.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/lists" for 127.0.0.1 at 2010-06-07 21:07:03
+  Processing by ListsController#index as HTML
+  [1m[35mList Load (0.4ms)[0m  SELECT "lists".* FROM "lists"
+Rendered lists/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 22ms (Views: 11.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lists/1/" for 127.0.0.1 at 2010-06-07 21:07:12
+  Processing by ListsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mList Load (0.2ms)[0m  [1mSELECT "lists".* FROM "lists" WHERE ("lists"."id" = 1) LIMIT 1[0m
+Rendered lists/show.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 69ms (Views: 11.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/lists/1/tasks/" for 127.0.0.1 at 2010-06-07 21:07:15
+
+ActionController::RoutingError (No route matches "/lists/1/tasks"):
+  
+
+Rendered /Users/redbeard/.rvm/gems/ruby-1.9.2-head/gems/actionpack-3.0.0.beta3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.1ms)
+
+
+Started GET "/lists/1.xml" for 127.0.0.1 at 2010-06-07 21:48:17
+  Processing by ListsController#show as XML
+  Parameters: {"id"=>"1"}
+  [1m[35mList Load (0.2ms)[0m  SELECT "lists".* FROM "lists" WHERE ("lists"."id" = 1) LIMIT 1
+Completed 200 OK in 50ms (Views: 34.9ms | ActiveRecord: 0.2ms)
