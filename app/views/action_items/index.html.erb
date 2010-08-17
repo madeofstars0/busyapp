@@ -1,0 +1,32 @@
+<h1>Listing action_items</h1>
+
+<table>
+  <tr>
+    <th>List</th>
+    <th>Context</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Due date</th>
+    <th>Is complete</th>
+    <th>Completed at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @action_items.each do |action_item| %>
+  <tr>
+    <td><%= action_item.list.name %></td>
+    <td><%= action_item.context %></td>
+    <td><%= action_item.name %></td>
+    <td><%= action_item.description %></td>
+    <td><%= action_item.due_date %></td>
+    <td><%= action_item.is_complete %></td>
+    <td><%= action_item.completed_at %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Action item', new_list_action_item_path %>

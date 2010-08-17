@@ -1,15 +1,27 @@
-<p class="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @list.name %>
-</p>
+<h3><%= @list.name %> [<%= link_to 'Edit', edit_list_path(@list) %>]</h3>
 
-<p>
-  <b>Description:</b>
-  <%= @list.description %>
-</p>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Context</th>
+    <th>Due date</th>
+  </tr>
+
+<% @list.action_items.each do |action_item| %>
+  <tr>
+    <td><%= action_item.name %></td>
+	<td><%= action_item.context %></td>
+    <td><%= action_item.due_date %></td>
+	<td><%= link_to "X", list_action_item_url(@list,action_item), :method => :delete %>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to "New Action Item", new_list_action_item_url(@list) %>
 
 
-<%= link_to 'Edit', edit_list_path(@list) %> |
-<%= link_to 'Back', lists_path %>
+
+
+

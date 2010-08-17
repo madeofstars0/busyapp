@@ -1,8 +1,12 @@
 class ListsController < ApplicationController
+
+  before_filter :authenticate_user!
+
+
   # GET /lists
   # GET /lists.xml
   def index
-    @lists = List.all
+    @lists = List.where(:user_id => current_user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +17,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.xml
   def show
-    @list = List.find(params[:id])
+    @list = List.where(:user_id => current_user).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,13 +38,14 @@ class ListsController < ApplicationController
 
   # GET /lists/1/edit
   def edit
-    @list = List.find(params[:id])
+    @list = List.where(:user_id => current_user).find(params[:id])
   end
 
   # POST /lists
   # POST /lists.xml
   def create
     @list = List.new(params[:list])
+    @list.user = current_user
 
     respond_to do |format|
       if @list.save
@@ -56,7 +61,7 @@ class ListsController < ApplicationController
   # PUT /lists/1
   # PUT /lists/1.xml
   def update
-    @list = List.find(params[:id])
+    @list = List.where(:user_id => current_user).find(params[:id])
 
     respond_to do |format|
       if @list.update_attributes(params[:list])
@@ -72,7 +77,7 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.xml
   def destroy
-    @list = List.find(params[:id])
+    @list = List.where(:user_id => current_user).find(params[:id])
     @list.destroy
 
     respond_to do |format|

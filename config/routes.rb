@@ -1,13 +1,16 @@
 Busyapp::Application.routes.draw do |map|
-  resources :lists
+  devise_for :users, :path => 'accounts', :path_names => { 
+    :sign_in => 'login', 
+    :sign_out => 'logout',
+    :sign_up => 'register'
+  }
 
-  resources :projects
-
-  resources :contexts
-
-  resources :tasks
   
-  root :to => "tasks#index"
+  resources :lists do
+    resources :action_items
+  end
+
+  root :to => "lists#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
