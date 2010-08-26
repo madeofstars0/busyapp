@@ -1,0 +1,14 @@
+#header {
+	background: rgb(224,224,224); 
+	height: 60px; 
+	padding: 10px 20px;
+}
+#header a:hover {
+	background: none;
+}
+form textarea.form-text-area {
+	width: auto;
+}
+form label {
+	display: block;
+}

@@ -9,6 +9,8 @@ Busyapp::Application.routes.draw do |map|
   resources :lists do
     resources :action_items
   end
+  
+  resources :calendars
 
   root :to => "lists#index"
 

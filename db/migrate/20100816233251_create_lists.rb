@@ -6,9 +6,12 @@ class CreateLists < ActiveRecord::Migration
 
       t.timestamps
     end
+    
+    add_index :lists, [ :user_id, :name ], :unique => true
   end
 
   def self.down
     drop_table :lists
+    drop_index :lists
   end
 end
