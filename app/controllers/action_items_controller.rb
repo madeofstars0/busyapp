@@ -52,7 +52,7 @@ class ActionItemsController < ApplicationController
 
     respond_to do |format|
       if @action_item.save
-        format.html { redirect_to(@action_item, :notice => 'Action item was successfully created.') }
+        format.html { redirect_to(@action_item.list, :notice => 'Action item was successfully created.') }
         format.xml  { render :xml => @action_item, :status => :created, :location => @action_item }
       else
         format.html { render :action => "new" }

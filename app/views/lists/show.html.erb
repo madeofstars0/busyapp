@@ -8,7 +8,7 @@
   <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
 <input type="checkbox" /> &nbsp;
 <%= action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
-	<!-- <%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %> -->
+	<%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %>
   </li>
 <% end %>
 </ul>
