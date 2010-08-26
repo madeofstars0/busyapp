@@ -4,3 +4,4 @@ db/*.sqlite3
 ._*
 .DS_Store
 *.swp
+log/*

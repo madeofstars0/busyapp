@@ -1,23 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @list.name %> [<%= link_to 'Edit', edit_list_path(@list) %>]</h3>
+<h3 style="border-bottom: 1px solid #666; padding-bottom: 5px;"><%= @list.name %> [<%= link_to 'Edit', edit_list_path(@list) %>]</h3>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Context</th>
-    <th>Due date</th>
-  </tr>
+<ul style="padding:0; margin:0;">
 
 <% @list.action_items.each do |action_item| %>
-  <tr>
-    <td><%= action_item.name %></td>
-	<td><%= action_item.context %></td>
-    <td><%= action_item.due_date %></td>
-	<td><%= link_to "X", list_action_item_url(@list,action_item), :method => :delete %>
-  </tr>
+  <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
+<input type="checkbox" /> &nbsp;
+<%= action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
+	<!-- <%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %> -->
+  </li>
 <% end %>
-</table>
+</ul>
 
 <%= link_to "New Action Item", new_list_action_item_url(@list) %>
 
