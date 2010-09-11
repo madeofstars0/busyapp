@@ -1,19 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h3 style="border-bottom: 1px solid #666; padding-bottom: 5px;"><%= @list.name %> [<%= link_to 'Edit', edit_list_path(@list) %>]</h3>
+<div class="elastic column">
+	<div class="content" style="padding: 20px;">
+		<div style="border-bottom: 1px solid #666; padding-bottom: 5px;">
+			<div style="float: right;">
+				[<%= link_to "+ Add", new_list_action_item_url(@list) %>]
+			</div>
+			<h3><%= @list.name %></h3> 
+		</div>
+	
+		<ul style="padding:0; margin:0;">
+		<% @list.action_items.each do |action_item| %>
+		  <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
+		<div><%= h action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
+			<%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %></div>
+			<% if action_item.description %><div style="font-size: 0.8em; color: #666; line-height: 1.6em;"><%= h action_item.description%></div><% end %>
+		  </li>
+		<% end %>
+		</ul>
+	</div>
+</div>
 
-<ul style="padding:0; margin:0;">
-
-<% @list.action_items.each do |action_item| %>
-  <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
-<input type="checkbox" /> &nbsp;
-<%= action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
-	<%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %>
-  </li>
-<% end %>
-</ul>
-
-<%= link_to "New Action Item", new_list_action_item_url(@list) %>
+<div class="fixed column" style="width: 240px;">
+	<div class="content" style="padding: 10px;">
+		<ul style="list-style: none; padding: 0; margin: 0;">
+			<% @lists.each do |l| %>
+			<% if l.id == @list.id %>
+			<li style="background: #CCC; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
+			<% else %>
+			<li style="list-style: none; padding: 5px;"><%= link_to l.name, list_url(l) %></li>
+			<% end %>
+			<% end%>
+		</ul>
+	</div>
+</div>
 
 
 

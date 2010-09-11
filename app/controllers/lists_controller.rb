@@ -17,7 +17,12 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.xml
   def show
-    @list = List.where(:user_id => current_user).find(params[:id])
+    @list = List.where(:user_id => current_user)
+                .where(:id => params[:id])
+                .order("action_items.due_date DESC, action_items.name ASC")
+                .includes(:action_items)
+                .first()
+    @lists = List.where(:user_id => current_user)
 
     respond_to do |format|
       format.html # show.html.erb

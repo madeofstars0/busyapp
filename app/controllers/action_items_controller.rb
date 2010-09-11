@@ -76,6 +76,24 @@ class ActionItemsController < ApplicationController
       end
     end
   end
+  
+  # POST /lists/9/action_items/18867/complete
+  def complete
+    @action_item = ActionItem.find(params[:id])
+    
+    @action_item.is_complete = true
+    @action_item.completed_at = DateTime.now
+    
+    respond_to do |format|
+      if @action_item.save
+        format.html { redirect_to(@action_item, :notice => 'Action item was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "index" }
+        format.xml  { render :xml => @action_item.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /action_items/1
   # DELETE /action_items/1.xml

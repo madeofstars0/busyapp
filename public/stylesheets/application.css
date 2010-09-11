@@ -3,7 +3,7 @@ header {
 	background: rgb(224,224,224); 
 	height: 60px; 
 	padding: 1px 20px;
-	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#E6B22E), color-stop(0.3, #FAD05E), color-stop(0.85, #FAE387));
+	background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#FAE387), color-stop(0.3, #FAD05E), color-stop(0.85, #E6B22E));
 	color: #5e5d49;
 }
 header a{
@@ -18,4 +18,13 @@ header a:hover {
 #content
 {
 	padding: 1px 20px;
+}
+ul#navigation
+{
+	list-style: none;
+	margin: 0;
+}
+ul#navigation li
+{
+	display:inline;
 }
