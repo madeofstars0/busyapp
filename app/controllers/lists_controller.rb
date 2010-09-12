@@ -22,7 +22,7 @@ class ListsController < ApplicationController
                 .order("action_items.due_date DESC, action_items.name ASC")
                 .includes(:action_items)
                 .first()
-    @lists = List.where(:user_id => current_user)
+    @lists = List.where(:user_id => current_user).order("name")
 
     respond_to do |format|
       format.html # show.html.erb
