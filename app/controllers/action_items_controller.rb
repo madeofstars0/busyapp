@@ -33,7 +33,7 @@ class ActionItemsController < ApplicationController
   # POST /action_items.xml
   def create
     @action_item = ActionItem.new(params[:action_item])
-    @action_item.list_id = params[:list_id]
+    #@action_item.list_id = params[:list_id]
     @action_item.user = current_user
 
     respond_to do |format|
@@ -54,7 +54,7 @@ class ActionItemsController < ApplicationController
 
     respond_to do |format|
       if @action_item.update_attributes(params[:action_item])
-        format.html { redirect_to(@action_item, :notice => 'Action item was successfully updated.') }
+        format.html { redirect_to(@action_item.list, :notice => 'Action item was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -88,7 +88,7 @@ class ActionItemsController < ApplicationController
     @action_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to(list_url(params[:list_id])) }
+      format.html { redirect_to(list_url(@action_item.list_id)) }
       format.xml  { head :ok }
     end
   end

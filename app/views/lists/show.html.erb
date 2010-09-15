@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<div style="padding: 20px; margin-right: 240px; float:left;">
+<div style="position: relative;">
+<div style="padding: 20px; margin-right: 240px;">
 	<div style="padding-bottom: 20px;">
 		<div style="float: right;">
 			[<%= link_to "+ Add", new_action_item_url() %>]
@@ -8,29 +8,68 @@
 		<h1 style="color: #5E5D49;"><%= @list.name %></h1> 
 	</div>
 
-	<ul style="padding:0; margin:0;">
+	<ul>
 	<% @list.action_items.each do |action_item| %>
-	  <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
-	<div><%= h action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
-		<%= link_to "X", action_item_url(action_item), :method => :delete, :confirm => "Are you sure?" %></div>
-		<% if action_item.description %><div style="font-size: 0.8em; color: #666; line-height: 1.6em;"><%= h action_item.description%></div><% end %>
+	  <li class="action-item-container" style="position: relative; line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0; clear: left;">
+	<div class="due-complete" style="position: absolute; top: 0; right: 0;">
+		<strong><%= action_item.due_date %></strong>
+		<%= link_to "✔", action_item_url(action_item) %>			
+	</div>
+	<div class="twist" style="position: absolute; top: 0; left: 0;">
+		<a href="#" onclick="$(this).parent().siblings('.action-item-extra').toggle();return false;"><img src="http://busy.siliconsea.net/media/img/closed.png" /></a></div>
+	<div class="action-item" style="margin: 0 25px;">
+	<%= link_to action_item.name, action_item_url(action_item) %>
+	</div>
+	
+	
+	<div class="action-item-extra" style="margin-left: 25px; display: none; color: #666; line-height: 1.6em;">
+	<% if action_item.description %>
+	<span style="font-size: 0.8em;"><%= h action_item.description%></span><br/><% end %>
+	<%= link_to "✖", action_item_url(action_item), :method => :delete, :confirm => "Are you sure?" %>
+	</div>
+	
 	  </li>
 	<% end %>
 	</ul>
 </div>
 
-<div style="padding: 10px; width: 220px; float: right;">
-	<ul style="list-style: none; padding: 0; margin: 0;">
+<div class="sidebar" style="padding: 10px; width: 220px; position: absolute; top: 0; right: 0;">
+	<ul class="lists" style="list-style: none; padding: 0; margin: 0;">
 		<% @lists.each do |l| %>
 		<% if l.id == @list.id %>
-		<li style="background: #BAD0E8; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
+		<li class="iamhere list-name" style="background: #BAD0E8; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
 		<% else %>
-		<li style="list-style: none; padding: 5px;"><%= link_to l.name, list_url(l) %></li>
+		<li class="list-name" style="list-style: none; padding: 5px;"><%= link_to l.name, list_url(l) %></li>
 		<% end %>
 		<% end%>
 	</ul>
 </div>
-
+</div>
+<a href="#" onclick="$('#new-action-item').show(); return false;">New Action Item</a>
+<div id="new-action-item" style="display: none;">
+	<%= form_for(ActionItem.new) do |f| %>
+	  <div class="field">
+		<%= f.hidden_field :list_id, :value => @list.id %>
+	    <%= f.label :name %><br />
+	    <%= f.text_field :name %>
+	  </div>
+	<a href="#" onclick="$('#new-action-item .advanced').toggle(); return false;">&gt; Advanced ...</a>
+	<div class="advanced" style="display: none;">
+	  <div class="field">
+	    <%= f.label :description %><br />
+	    <%= f.text_area :description %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :due_date %><br />
+	    <%= f.text_field :due_date %>
+	  </div>
+	</div>
+	  <div class="actions">
+	    <%= f.submit %>
+	  </div>
+	<% end %>
+	
+</div>
 
 
 
