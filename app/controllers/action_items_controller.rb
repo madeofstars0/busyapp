@@ -2,18 +2,6 @@ class ActionItemsController < ApplicationController
   
   before_filter :authenticate_user!
   
-  
-  # GET /action_items
-  # GET /action_items.xml
-  def index
-    @action_items = ActionItem.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @action_items }
-    end
-  end
-
   # GET /action_items/1
   # GET /action_items/1.xml
   def show
@@ -29,7 +17,6 @@ class ActionItemsController < ApplicationController
   # GET /action_items/new.xml
   def new
     @action_item = ActionItem.new
-    @list = List.find(params[:list_id])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +27,6 @@ class ActionItemsController < ApplicationController
   # GET /action_items/1/edit
   def edit
     @action_item = ActionItem.find(params[:id])
-    @list = List.find(params[:list_id])
   end
 
   # POST /action_items
@@ -77,7 +63,7 @@ class ActionItemsController < ApplicationController
     end
   end
   
-  # POST /lists/9/action_items/18867/complete
+  # POST action_items/18867/complete
   def complete
     @action_item = ActionItem.find(params[:id])
     

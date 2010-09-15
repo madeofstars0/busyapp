@@ -1,4 +1,4 @@
-<%= form_for([@list,@action_item]) do |f| %>
+<%= form_for(@action_item) do |f| %>
   <% if @action_item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@action_item.errors.count, "error") %> prohibited this action_item from being saved:</h2>

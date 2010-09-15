@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<div style="padding: 20px;">
-	<div style="border-bottom: 1px solid #666; padding-bottom: 5px;">
+<div style="padding: 20px; margin-right: 240px; float:left;">
+	<div style="padding-bottom: 20px;">
 		<div style="float: right;">
-			[<%= link_to "+ Add", new_list_action_item_url(@list) %>]
+			[<%= link_to "+ Add", new_action_item_url() %>]
 		</div>
-		<h3><%= @list.name %></h3> 
+		<h1 style="color: #5E5D49;"><%= @list.name %></h1> 
 	</div>
 
 	<ul style="padding:0; margin:0;">
 	<% @list.action_items.each do |action_item| %>
 	  <li style="line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0;">
 	<div><%= h action_item.name %> &nbsp;<strong><%= action_item.due_date %></strong>
-		<%= link_to "X", list_action_item_url(@list,action_item), :method => :delete, :confirm => "Are you sure?" %></div>
+		<%= link_to "X", action_item_url(action_item), :method => :delete, :confirm => "Are you sure?" %></div>
 		<% if action_item.description %><div style="font-size: 0.8em; color: #666; line-height: 1.6em;"><%= h action_item.description%></div><% end %>
 	  </li>
 	<% end %>
 	</ul>
 </div>
 
-<div style="padding: 10px;">
+<div style="padding: 10px; width: 220px; float: right;">
 	<ul style="list-style: none; padding: 0; margin: 0;">
 		<% @lists.each do |l| %>
 		<% if l.id == @list.id %>
-		<li style="background: #CCC; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
+		<li style="background: #BAD0E8; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
 		<% else %>
 		<li style="list-style: none; padding: 5px;"><%= link_to l.name, list_url(l) %></li>
 		<% end %>
