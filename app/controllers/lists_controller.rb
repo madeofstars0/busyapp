@@ -15,9 +15,7 @@
 # limitations under the License.
 
 class ListsController < ApplicationController
-
   before_filter :authenticate_user!
-
 
   # GET /lists
   # GET /lists.xml
@@ -35,8 +33,8 @@ class ListsController < ApplicationController
   def show
     @list = List.where(:user_id => current_user)
                 .where(:id => params[:id])
-                .order("action_items.due_date DESC, action_items.name ASC")
-                .includes(:action_items)
+                .order("list_items.due_date DESC, list_items.name ASC")
+                .includes(:list_items)
                 .first()
     @lists = List.where(:user_id => current_user).order("name")
 

@@ -3,29 +3,29 @@
 <div style="padding: 20px; margin-right: 240px;">
 	<div style="padding-bottom: 20px;">
 		<div style="float: right;">
-			[<%= link_to "+ Add", new_action_item_url() %>]
+			[<%= link_to "+ Add", new_list_item_url() %>]
 		</div>
 		<h1 style="color: #5E5D49;"><%= @list.name %></h1> 
 	</div>
 
 	<ul>
-	<% @list.action_items.each do |action_item| %>
+	<% @list.list_items.each do |item| %>
 	  <li class="action-item-container" style="position: relative; line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0; clear: left;">
 	<div class="due-complete" style="position: absolute; top: 0; right: 0;">
-		<strong><%= action_item.due_date %></strong>
-		<%= link_to "✔", action_item_url(action_item) %>			
+		<strong><%= item.due_date %></strong>
+		<%= link_to "✔", list_item_url(item) %>			
 	</div>
 	<div class="twist" style="position: absolute; top: 0; left: 0;">
 		<a href="#" onclick="$(this).parent().siblings('.action-item-extra').toggle();return false;"><img src="http://busy.siliconsea.net/media/img/closed.png" /></a></div>
 	<div class="action-item" style="margin: 0 25px;">
-	<%= link_to action_item.name, action_item_url(action_item) %>
+	<%= link_to item.name, list_item_url(item) %>
 	</div>
 	
 	
 	<div class="action-item-extra" style="margin-left: 25px; display: none; color: #666; line-height: 1.6em;">
-	<% if action_item.description %>
-	<span style="font-size: 0.8em;"><%= h action_item.description%></span><br/><% end %>
-	<%= link_to "✖", action_item_url(action_item), :method => :delete, :confirm => "Are you sure?" %>
+	<% if item.description %>
+	<span style="font-size: 0.8em;"><%= h item.description%></span><br/><% end %>
+	<%= link_to "✖", list_item_url(item), :method => :delete, :confirm => "Are you sure?" %>
 	</div>
 	
 	  </li>
@@ -45,9 +45,9 @@
 	</ul>
 </div>
 </div>
-<a href="#" onclick="$('#new-action-item').show(); return false;">New Action Item</a>
+<a href="#" onclick="$('#new-action-item').show(); return false;">Add to item to <%= h @list.name %></a>
 <div id="new-action-item" style="display: none;">
-	<%= form_for(ActionItem.new) do |f| %>
+	<%= form_for(ListItem.new) do |f| %>
 	  <div class="field">
 		<%= f.hidden_field :list_id, :value => @list.id %>
 	    <%= f.label :name %><br />

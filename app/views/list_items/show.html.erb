@@ -11,11 +11,6 @@
 </p>
 
 <p>
-  <b>Context:</b>
-  <%= @list_item.context %>
-</p>
-
-<p>
   <b>Name:</b>
   <%= @list_item.name %>
 </p>
@@ -41,5 +36,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_action_item_path(@list_item) %> |
-<%= link_to 'Back', action_items_path(@list_item) %>
+<%= link_to 'Edit', edit_list_item_path(@list_item) %> |
+<%= link_to 'Back', list_path(@list_item.list) %>
