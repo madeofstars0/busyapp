@@ -1,6 +1,6 @@
 class List < ActiveRecord::Base
   belongs_to :user
-  has_many :action_items
+  has_many :list_items
   
   validates_presence_of :user_id
   validates_presence_of :name

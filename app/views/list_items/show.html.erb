@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>List:</b>
+  <%= @list_item.list_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @list_item.user_id %>
+</p>
+
+<p>
+  <b>Context:</b>
+  <%= @list_item.context %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @list_item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @list_item.description %>
+</p>
+
+<p>
+  <b>Due date:</b>
+  <%= @list_item.due_date %>
+</p>
+
+<p>
+  <b>Is complete:</b>
+  <%= @list_item.is_complete %>
+</p>
+
+<p>
+  <b>Completed at:</b>
+  <%= @list_item.completed_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_action_item_path(@list_item) %> |
+<%= link_to 'Back', action_items_path(@list_item) %>

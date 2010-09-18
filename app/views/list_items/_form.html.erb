@@ -1,20 +1,16 @@
-<%= form_for(@action_item) do |f| %>
-  <% if @action_item.errors.any? %>
+<%= form_for(@list_item) do |f| %>
+  <% if @list_item.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@action_item.errors.count, "error") %> prohibited this action_item from being saved:</h2>
+      <h2><%= pluralize(@list_item.errors.count, "error") %> prohibited this list item from being saved:</h2>
 
       <ul>
-      <% @action_item.errors.full_messages.each do |msg| %>
+      <% @list_item.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :context %><br />
-    <%= f.text_field :context %>
-  </div>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>

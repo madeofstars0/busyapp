@@ -1,4 +1,4 @@
-class ActionItem < ActiveRecord::Base
+class ListItem < ActiveRecord::Base
   belongs_to :user
   belongs_to :list
   

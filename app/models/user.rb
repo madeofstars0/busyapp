@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :lists
-  has_many :action_items
+  has_many :list_items
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable

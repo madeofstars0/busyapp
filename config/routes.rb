@@ -7,7 +7,7 @@ Busyapp::Application.routes.draw do |map|
 
   
   resources :lists
-  resources :action_items
+  resources :list_items
   
   resources :calendars
 

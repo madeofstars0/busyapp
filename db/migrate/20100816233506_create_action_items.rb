@@ -1,9 +1,8 @@
-class CreateActionItems < ActiveRecord::Migration
+class CreateListItems < ActiveRecord::Migration
   def self.up
-    create_table :action_items do |t|
+    create_table :list_items do |t|
       t.integer :list_id
       t.integer :user_id
-      t.string :context
       t.string :name
       t.text :description
       t.date :due_date
@@ -15,6 +14,6 @@ class CreateActionItems < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :action_items
+    drop_table :list_items
   end
 end
