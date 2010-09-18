@@ -22,7 +22,8 @@ gem 'pg'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+
+group :test, :development do
+  gem 'rspec-rails', '>= 2.0.0.beta.22'
+  gem 'webrat'
+end
