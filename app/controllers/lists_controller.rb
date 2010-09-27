@@ -33,7 +33,7 @@ class ListsController < ApplicationController
   def show
     @list = List.where(:user_id => current_user)
                 .where(:id => params[:id])
-                .order("list_items.due_date DESC, list_items.name ASC")
+                .order("list_items.due_date ASC, list_items.name ASC")
                 .includes(:list_items)
                 .first()
     @lists = List.where(:user_id => current_user).order("name")

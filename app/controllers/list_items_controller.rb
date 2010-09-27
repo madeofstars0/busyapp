@@ -20,7 +20,7 @@ class ListItemsController < ApplicationController
   # GET /list_items/1
   # GET /list_items/1.xml
   def show
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -41,7 +41,7 @@ class ListItemsController < ApplicationController
 
   # GET /list_items/1/edit
   def edit
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
   end
 
   # POST /list_items
@@ -64,7 +64,7 @@ class ListItemsController < ApplicationController
   # PUT /list_items/1
   # PUT /list_items/1.xml
   def update
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
 
     respond_to do |format|
       if @list_item.update_attributes(params[:list_item])
@@ -79,7 +79,7 @@ class ListItemsController < ApplicationController
   
   # POST list_items/18867/complete
   def complete
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
     
     @list_item.is_complete = true
     @list_item.completed_at = DateTime.now
@@ -98,7 +98,7 @@ class ListItemsController < ApplicationController
   # DELETE /list_items/1
   # DELETE /list_items/1.xml
   def destroy
-    @list_item = ListItem.find(params[:id])
+    @list_item = current_user.list_items.find(params[:id])
     @list_item.destroy
 
     respond_to do |format|
