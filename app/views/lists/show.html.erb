@@ -1,67 +1,72 @@
 <p id="notice"><%= notice %></p>
-<div style="position: relative;">
-<div style="padding: 20px; margin-right: 240px;">
-	<div style="padding-bottom: 10px; margin-bottom: 10px; border-bottom: 1px solid #545454;">
+
+<div class="busy-list">
+	<div class="busy-list-header">
 		<div style="float: right;">
-			[<%= link_to "+ Add", new_list_item_url() %>]
+			[<%= link_to "+ Add", new_list_item_url(), :onclick => "$('#new-list-item').modal({opacity:80, overlayCss: {backgroundColor: '#000'}}); return false;" %>]
 		</div>
-		<h2 style="color: #5E5D49;"><%= @list.name %></h2> 
+		<h1><span class="pictos">n</span> <%= @list.name %></h1> 
 	</div>
 
 	<ul>
 	<% @list.list_items.each do |item| %>
-	  <li class="action-item-container" style="position: relative; line-height: 2.0em; list-style:none; margin-left: 0; padding-left: 0; clear: left;">
-	<div class="due-complete" style="position: absolute; top: 0; right: 0;">
-		<strong><%= item.due_date %></strong>
-		<%= link_to "✔", list_item_url(item) %>			
+	<% if !item.is_complete %>
+	  <li class="list-item-container">
+	<div class="due-complete">
+		<% if item.due_date %><strong><%= item.due_date %>&nbsp;</strong><% end %>
+		<span class="pictos"><%= link_to "3", complete_list_item_url(item), :method => :post %></span>
 	</div>
-	<div class="twist" style="position: absolute; top: 0; left: 0;">
+	<div class="twist">
 		<a href="#" onclick="$(this).parent().siblings('.action-item-extra').toggle();return false;"><img src="http://busy.siliconsea.net/media/img/closed.png" /></a></div>
-	<div class="action-item" style="margin: 0 25px;">
+	<div class="action-item">
 	<%= link_to item.name, list_item_url(item) %>
 	</div>
 	
 	
-	<div class="action-item-extra" style="margin-left: 25px; display: none; color: #666; line-height: 1.6em;">
+	<div class="action-item-extra">
 	<% if item.description %>
-	<span style="font-size: 0.8em;"><%= h item.description%></span><br/><% end %>
+	<span><%= h item.description%></span><br/><% end %>
+	<span>Updated: <%= h item.updated_at %></span><br />
 	<%= link_to "✖", list_item_url(item), :method => :delete, :confirm => "Are you sure?" %>
 	</div>
 	
 	  </li>
 	<% end %>
+	<% end %>
 	</ul>
 </div>
 
-<div class="sidebar" style="padding: 10px; width: 220px; position: absolute; top: 0; right: 0;">
-	<ul class="lists" style="list-style: none; padding: 0; margin: 0;">
+<nav class="sidebar">
+	<ul class="lists">
+		<li><em>My Lists</em></li>
 		<% @lists.each do |l| %>
 		<% if l.id == @list.id %>
-		<li class="iamhere list-name" style="background: #BAD0E8; padding: 5px; list-style: none; font-weight: bold;"><%= link_to l.name, list_url(l) %></li>
+		<li class="iamhere"><%= link_to l.name, list_url(l) %></li>
 		<% else %>
-		<li class="list-name" style="list-style: none; padding: 5px;"><%= link_to l.name, list_url(l) %></li>
+		<li><%= link_to l.name, list_url(l) %></li>
 		<% end %>
 		<% end%>
 	</ul>
-</div>
-</div>
-<a href="#" onclick="$('#new-action-item').show(); return false;">Add to item to <%= h @list.name %></a>
-<div id="new-action-item" style="display: none;">
+</nav>
+
+<div class="busy-list-actions">
+<a href="#" onclick="$('#new-list-item').modal({opacity:80, overlayCss: {backgroundColor: '#000'}}); return false;">Add to item to <%= h @list.name %></a>
+<div id="new-list-item">
 	<%= form_for(ListItem.new) do |f| %>
 	  <div class="field">
 		<%= f.hidden_field :list_id, :value => @list.id %>
 	    <%= f.label :name %><br />
-	    <%= f.text_field :name %>
+	    <%= f.text_field :name, :autocomplete => "off" %>
 	  </div>
-	<a href="#" onclick="$('#new-action-item .advanced').toggle(); return false;">&gt; Advanced ...</a>
-	<div class="advanced" style="display: none;">
+	<a href="#" onclick="$('#new-list-item .advanced').toggle(); return false;">&gt; Advanced ...</a>
+	<div class="advanced">
 	  <div class="field">
 	    <%= f.label :description %><br />
 	    <%= f.text_area :description %>
 	  </div>
 	  <div class="field">
 	    <%= f.label :due_date %><br />
-	    <%= f.text_field :due_date %>
+	    <%= f.text_field :due_date, :type => "date" %>
 	  </div>
 	</div>
 	  <div class="actions">
@@ -70,7 +75,3 @@
 	<% end %>
 	
 </div>
-
-
-
-

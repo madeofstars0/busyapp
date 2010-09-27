@@ -7,7 +7,11 @@ Busyapp::Application.routes.draw do |map|
 
   
   resources :lists
-  resources :list_items
+  resources :list_items do
+    member do
+      post :complete
+    end
+  end
   
   resources :calendars
 

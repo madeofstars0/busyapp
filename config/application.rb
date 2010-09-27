@@ -31,7 +31,7 @@ module Busyapp
     # config.i18n.default_locale = :de
     
     # JavaScript files you want as :defaults (application.js is always included).
-    config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.2.min.js', 'jquery.validate.min.js','rails']
+    config.action_view.javascript_expansions[:defaults] = ['jquery-1.4.2.min.js', 'jquery.validate.min.js', 'jquery.simplemodal-1.3.5.min.js','rails']
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
     # config.generators do |g|

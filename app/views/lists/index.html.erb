@@ -1,13 +1,15 @@
-<h1>Listing lists</h1>
+<div style="padding: 20px;">
+	<h1>My Lists</h1>
+	<p>&nbsp;</p>
 
-<p>Account: <%= current_user.email %></p>
+	<ul style="list-style: none;">
+	<% @lists.each do |list| %>
+	    <li><%= link_to list.name, list %></li>
+	<% end %>
+	</ul>
 
-<ul>
-<% @lists.each do |list| %>
-    <li><%= link_to list.name, list %></li>
-<% end %>
-</ul>
+	<br />
 
-<br />
+	<%= link_to 'New List', new_list_path %>
 
-<%= link_to 'New List', new_list_path %>
+</div>

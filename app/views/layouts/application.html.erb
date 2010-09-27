@@ -7,16 +7,18 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<div id="header">
-		<h1><a href="/">busy</a></h1>
-		<ul id="navigation">
-			<li><%= link_to "List", lists_url %></li>
-			<li>Calendar</li>
+	<header>
+		<h1><a href="<%= root_url %>"><span class="pictos">2</span> busy</a></h1>
+		<nav>
+		<ul>
+			<li><span class="pictos">n</span> <%= link_to "My Lists", lists_url %></li>
+			<!--<li>Calendar</li>-->
 		</ul>
-	</div>
+		</nav>
+	</header>
 
 
-	<div>
+	<div id="busy-container">
 	<%= yield %>
 	</div>
 
