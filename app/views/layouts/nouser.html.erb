@@ -7,16 +7,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-	<header class="unit">
-		<div class="container">
-		<h1><a href="/">Busy</a></h1>
-		</div>
+	<header>
+		<h1><a href="<%= root_url %>"><span class="pictos">2</span> busy</a></h1><p>&nbsp;</p>
 	</header>
 
-<div class="unit">
-	<div class="container">
-    <%= yield %>
+
+	<div id="busy-container">
+	<%= yield %>
 	</div>
-</div>
+
 </body>
 </html>

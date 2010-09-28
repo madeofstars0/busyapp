@@ -39,4 +39,9 @@ Busyapp::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
+  
+  # Setup the Devise controllers to use a different layout
+  config.to_prepare { 
+    Devise::SessionsController.layout "nouser" 
+  }
 end

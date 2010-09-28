@@ -8,6 +8,10 @@ Keeping the features simple, I hope to be able to:
 * Daily/Weekly style email lists delivered to your inbox in HTML glory
 * A quick and functional web application interface.
 
+### ICONS ###
+
+Some Icons are Copyright (c) [Yusuke Kamiyamane](http://p.yusukekamiyamane.com/). All rights reserved. Licensed under a [Creative Commons Attribution 3.0 license](http://creativecommons.org/licenses/by/3.0/).
+
 ### LICENSE AND COPYRIGHT ###
 
 Copyright 2010 Bryan Rehbein

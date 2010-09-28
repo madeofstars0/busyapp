@@ -5,7 +5,7 @@
 		<div style="float: right;">
 			[<%= link_to "+ Add", new_list_item_url(), :onclick => "$('#new-list-item').modal({opacity:80, overlayCss: {backgroundColor: '#000'}}); return false;" %>]
 		</div>
-		<h1><span class="pictos">n</span> <%= @list.name %></h1> 
+		<h1><div class="list-icon">&nbsp;</div><%= @list.name %></h1> 
 	</div>
 
 	<ul>
@@ -14,20 +14,18 @@
 	  <li class="list-item-container">
 	<div class="due-complete">
 		<% if item.due_date %><strong><%= item.due_date %>&nbsp;</strong><% end %>
-		<span class="pictos"><%= link_to "3", complete_list_item_url(item), :method => :post %></span>
+		<div class="complete"><%= link_to "-", complete_list_item_url(item), :method => :post %></div>
 	</div>
 	<div class="twist">
-		<a href="#" onclick="$(this).parent().siblings('.action-item-extra').toggle();return false;"><img src="http://busy.siliconsea.net/media/img/closed.png" /></a></div>
-	<div class="action-item">
-	<%= link_to item.name, list_item_url(item) %>
-	</div>
-	
+		<a href="#" onclick="$(this).parent().toggleClass('open').siblings('.action-item-extra').toggle();return false;">&nbsp;</a></div>
+	<div class="action-item"><%= h item.name %></div>	
 	
 	<div class="action-item-extra">
 	<% if item.description %>
 	<span><%= h item.description%></span><br/><% end %>
 	<span>Updated: <%= h item.updated_at %></span><br />
-	<%= link_to "✖", list_item_url(item), :method => :delete, :confirm => "Are you sure?" %>
+	<%= link_to "Edit", edit_list_item_url(item) %>&nbsp;
+	<%= link_to "✖ Delete", list_item_url(item), :method => :delete, :confirm => "Are you sure?" %>
 	</div>
 	
 	  </li>
@@ -38,7 +36,7 @@
 
 <nav class="sidebar">
 	<ul class="lists">
-		<li><em>My Lists</em></li>
+		<li><div class="lists-icon">&nbsp;</div><strong>My Lists</strong></li>
 		<% @lists.each do |l| %>
 		<% if l.id == @list.id %>
 		<li class="iamhere"><%= link_to l.name, list_url(l) %></li>

@@ -1,10 +1,10 @@
-<div style="padding: 20px;">
+
 	<h1>My Lists</h1>
 	<p>&nbsp;</p>
 
 	<ul style="list-style: none;">
 	<% @lists.each do |list| %>
-	    <li><%= link_to list.name, list %></li>
+	    <li style="line-height: 24px;"><div class="list-icon">&nbsp;</div><%= link_to list.name, list %></li>
 	<% end %>
 	</ul>
 
@@ -12,4 +12,3 @@
 
 	<%= link_to 'New List', new_list_path %>
 
-</div>

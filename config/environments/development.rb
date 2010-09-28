@@ -19,4 +19,9 @@ Busyapp::Application.configure do
   
   # Log deprecation notices
   config.active_support.deprecation = :log
+  
+  # Setup the Devise controllers to use a different layout
+  config.to_prepare { 
+    Devise::SessionsController.layout "nouser" 
+  }
 end

@@ -44,12 +44,25 @@ header nav ul li
 }
 #busy-container h1 {
 	font-size: 1.4em;
+	line-height: 26px;
 }
 #busy-container .busy-list {
 	margin-right: 240px;
 }
 #busy-container .busy-list .busy-list-header {
-	padding-bottom: 10px;
+	padding-bottom: 3px;
+}
+.list-icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../images/sprites.png) no-repeat -24px 0;
+}
+.lists-icon {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url(../images/sprites.png) no-repeat 0 0;
 }
 #busy-container .busy-list > ul {
 	border: 1px solid #5e5D49; 
@@ -75,13 +88,44 @@ header nav ul li
 	top: 0; left: 0;
 	height: 24px;
 	width: 24px;
+	background: url(../images/sprites.png) no-repeat -120px 0;
+}
+#busy-container  li.list-item-container .twist.open {
+	background-position: -120px -24px;
+}
+#busy-container  li.list-item-container .twist a {
+	display: inline-block;
+	height: 24px;
+	width: 24px;
+	text-decoration: none;
+}
+#busy-container li.list-item-container .due-complete {
+	text-align: right;
+	height: 24px;
+	line-height: 24px;
+}
+#busy-container li.list-item-container .due-complete .complete {
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	overflow: hidden;
+	background: url(../images/sprites.png) no-repeat -48px 0;
+}
+#busy-container li.list-item-container .due-complete .complete:hover {
+	background-position: -48px -24px;
 }
 #busy-container  li.list-item-container .due-complete a
 {
+	display: block;
+	width: 24px;
+	height: 24px;
 	text-decoration: none;
 }
 #busy-container  li.list-item-container .action-item {
 	margin: 0 24px;
+}
+#busy-container  li.list-item-container .action-item a {
+	text-decoration: none;
 }
 #busy-container  li.list-item-container .action-item-extra {
 	margin-left: 25px; display: none; color: #666; line-height: 1.6em;
