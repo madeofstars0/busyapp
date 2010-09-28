@@ -15,14 +15,16 @@ ActiveRecord::Schema.define(:version => 20100816233637) do
   create_table "list_items", :force => true do |t|
     t.integer  "list_id"
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",                            :null => false
     t.text     "description"
     t.date     "due_date"
-    t.boolean  "is_complete"
+    t.boolean  "is_complete",  :default => false, :null => false
     t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "list_items", ["user_id", "list_id"], :name => "index_list_items_on_user_id_and_list_id"
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
