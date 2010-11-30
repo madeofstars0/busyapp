@@ -20,7 +20,9 @@ class ListItem < ActiveRecord::Base
   
   validates_presence_of :list_id
   validates_presence_of :user_id
-  validates_presence_of :name
+  #validates_presence_of :name
+  
+  validates :name, :presence => true, :length => { :within => 1..40 }
   
   def mark_complete
     is_complete = true
@@ -31,6 +33,13 @@ class ListItem < ActiveRecord::Base
   # we only want the parsing on quick-input, not when due-date was intentionally not
   # filled out
   
+  def overdue?
+    due_date < Date.today
+  end
+  
+  def due_today?
+    due_date == Date.today
+  end
   
   
   before_validation(:on => :create) do

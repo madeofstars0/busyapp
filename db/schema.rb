@@ -15,10 +15,10 @@ ActiveRecord::Schema.define(:version => 20100816233637) do
   create_table "list_items", :force => true do |t|
     t.integer  "list_id"
     t.integer  "user_id"
-    t.string   "name",                            :null => false
+    t.string   "name",         :limit => 40,                    :null => false
     t.text     "description"
     t.date     "due_date"
-    t.boolean  "is_complete",  :default => false, :null => false
+    t.boolean  "is_complete",                :default => false, :null => false
     t.datetime "completed_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(:version => 20100816233637) do
 
   create_table "lists", :force => true do |t|
     t.integer  "user_id"
-    t.string   "name"
+    t.string   "name",        :limit => 40, :null => false
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

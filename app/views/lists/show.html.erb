@@ -1,10 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<div class="busy-list">
+<div class="busy-list" style="-webkit-box-shadow: 2px 1px 4px #454545;">
 	<div class="busy-list-header">
-		<div style="float: right;">
-			[<%= link_to "+ Add", new_list_item_url(), :onclick => "$('#new-list-item').modal({opacity:80, overlayCss: {backgroundColor: '#000'}}); return false;" %>]
-		</div>
 		<h1><div class="list-icon">&nbsp;</div><%= @list.name %></h1> 
 	</div>
 
@@ -13,42 +10,59 @@
 	<% if !item.is_complete %>
 	  <li class="list-item-container">
 	<div class="due-complete">
-		<% if item.due_date %><strong><%= item.due_date %>&nbsp;</strong><% end %>
-		<div class="complete"><%= link_to "-", complete_list_item_url(item), :method => :post %></div>
+		<% if item.due_date %>
+			<% if item.overdue? %>!! <% end %>
+			<div class="due-date"><%= item.due_date %></div>
+		<% end %>
+		<div class="complete"><%= link_to "Mark Complete", complete_list_item_url(item), :method => :post %></div>
 	</div>
-	<div class="twist">
-		<a href="#" onclick="$(this).parent().toggleClass('open').siblings('.action-item-extra').toggle();return false;">&nbsp;</a></div>
-	<div class="action-item"><%= h item.name %></div>	
 	
-	<div class="action-item-extra">
+
+	<div class="action-item"><%= link_to item.name, edit_list_item_url(item) %></div>	
+	
 	<% if item.description %>
-	<span><%= h item.description%></span><br/><% end %>
-	<span>Updated: <%= h item.updated_at %></span><br />
-	<%= link_to "Edit", edit_list_item_url(item) %>&nbsp;
+		<p><%= h item.description%></p>
+	<% end %>
+	<div style="display: none;">
+	
 	<%= link_to "✖ Delete", list_item_url(item), :method => :delete, :confirm => "Are you sure?" %>
 	</div>
 	
 	  </li>
 	<% end %>
 	<% end %>
+	<li>
+		<%= form_for(ListItem.new) do |f| %>
+		  <div class="field">
+			<%= f.hidden_field :list_id, :value => @list.id %>
+		    <%= f.text_field :name, :autocomplete => "off" %>
+			<a href="#" style="font-size: 0.8em;">more...</a>
+		  </div>
+		<% end %>
+	</li>
 	</ul>
 </div>
 
-<nav class="sidebar">
+<nav class="sidebar" style="padding: 10px; background: #CCC; background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#E6B22E), color-stop(0.3, #FAD05E), color-stop(0.85, #FAE387)); border-radius: 6px; -webkit-box-shadow: 2px 1px 4px #454545;">
+	<p style="padding-bottom: 10px;text-align: right;"><img src="/images/busy-logo.png" height="60px" /></p>
 	<ul class="lists">
-		<li><div class="lists-icon">&nbsp;</div><strong>My Lists</strong></li>
 		<% @lists.each do |l| %>
 		<% if l.id == @list.id %>
-		<li class="iamhere"><%= link_to l.name, list_url(l) %></li>
+		<li class="current-list"><div class="list-icon">&nbsp;</div><%= link_to l.name, list_url(l) %></li>
 		<% else %>
-		<li><%= link_to l.name, list_url(l) %></li>
+		<li><div class="list-icon">&nbsp;</div><%= link_to l.name, list_url(l) %></li>
 		<% end %>
 		<% end%>
+		<li>&nbsp;</li>
+		<li><div class="lists-icon">&nbsp;</div><%= link_to 'Manage Lists', new_list_path %></li>
+		<li><div class="lists-icon">&nbsp;</div><%= link_to 'Manage Account', new_list_path%></li>
 	</ul>
+	
 </nav>
 
 <div class="busy-list-actions">
-<a href="#" onclick="$('#new-list-item').modal({opacity:80, overlayCss: {backgroundColor: '#000'}}); return false;">Add to item to <%= h @list.name %></a>
+<a href="#" onclick="$('#new-list-item').modal({opacity:40, overlayCss: {backgroundColor: '#000'}}); return false;">Add to item to <%= h @list.name %></a><br/><br/>
+<a href="#" onclick="$('#new-list-item').slideToggle(); return false;">Add to item to <%= h @list.name %></a>
 <div id="new-list-item">
 	<%= form_for(ListItem.new) do |f| %>
 	  <div class="field">

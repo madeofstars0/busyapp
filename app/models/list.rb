@@ -16,10 +16,11 @@
 
 class List < ActiveRecord::Base
   belongs_to :user
-  has_many :list_items
+  has_many :list_items, :dependent => :destroy
   
   validates_presence_of :user_id
-  validates_presence_of :name
   validates_uniqueness_of :name, :scope => :user_id
   
+  validates :name, :presence => true, :length => { :within => 1..40 }
+  validates :description, :length => { :maximum => 255 }
 end

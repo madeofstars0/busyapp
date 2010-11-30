@@ -2,7 +2,8 @@ class CreateLists < ActiveRecord::Migration
   def self.up
     create_table :lists do |t|
       t.integer :user_id
-      t.string :name
+      t.string :name, :null => false, :limit => 40
+      t.string :description, :limit => 255
 
       t.timestamps
     end

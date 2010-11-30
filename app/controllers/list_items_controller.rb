@@ -86,7 +86,7 @@ class ListItemsController < ApplicationController
     
     respond_to do |format|
       if @list_item.save
-        format.html { redirect_to(@list_item, :notice => 'Item was successfully updated.') }
+        format.html { redirect_to(@list_item.list, :notice => 'Item was successfully completed.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "index" }
